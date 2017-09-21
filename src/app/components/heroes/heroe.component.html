@@ -10,32 +10,33 @@
     <form (ngSubmit)="guardar()" #form="ngForm">
       <div class="form-group">
         <label>Nombre</label>
-        <input
+        <input [(ngModel)]="heroe.nombre"
           class="form-control"
           type="text"
-          name=""
+          name="nombre"
           placeholder="Nombre del héroe"
           required
         >
       </div>
       <div class="form-group">
         <label>Casa</label>
-        <select class="form-control" name="">
+        <select [(ngModel)]="heroe.casa"
+          class="form-control" name="casa">
           <option value="Marvel">Marvel</option>
           <option value="DC">DC</option>
         </select>
       </div>
       <div class="form-group">
         <label>Bio</label>
-        <textarea
+        <textarea [(ngModel)]="heroe.bio"
           class="form-control"
           type="text"
-          name=""
-          required
+          name="bio"
         ></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-outline-primary">
+        <button [disabled]="!form.valid"
+          type="submit" class="btn btn-outline-primary">
           Guardar cambios
         </button>
       </div>
