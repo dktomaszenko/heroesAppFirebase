@@ -7,7 +7,7 @@
 
 <div class="row animated fadeIn fast">
   <div class="col-md-12">
-    <form>
+    <form (ngSubmit)="guardar()" #form="ngForm">
       <div class="form-group">
         <label>Nombre</label>
         <input
