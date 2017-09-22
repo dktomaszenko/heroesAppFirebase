@@ -27,13 +27,13 @@ export class HeroesService {
 
   }
 
-  actualizarHeroe(heroe: Heroe, prefix: string = 'heroes') {
+  actualizarHeroe(heroe: Heroe, prefix: string = 'heroes', id: string) {
     let body = JSON.stringify(heroe);
     let header = new Headers({
       'Content-type': 'application/json'
     });
 
-    return this.http.put(this.fireUrl + `${ prefix }.json`, body, {headers: header})
+    return this.http.put(this.fireUrl + `${ prefix }/${id}.json`, body, {headers: header})
       .map(res => {
         return res.json();
       });

@@ -17,9 +17,14 @@ export class HeroeComponent implements OnInit {
     casa: 'Marvel'
   };
 
+  nuevo: boolean = false;
+  id: string;
+
   constructor(private heroesService: HeroesService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.params.subscribe(parametros => this.id = parametros['id']);
   }
 
   ngOnInit() {
@@ -27,12 +32,24 @@ export class HeroeComponent implements OnInit {
   }
 
   guardar() {
-    this.heroesService.nuevoHeroe(this.heroe, 'heroes').subscribe(
-      data => {
-        this.router.navigate(['/heroe', data.name]);
-      },
-      error => console.error(error)
-    );
+    if (this.id === 'nuevo') {
+      // insert
+      this.heroesService.nuevoHeroe(this.heroe, 'heroes').subscribe(
+        data => {
+          this.router.navigate(['/heroe', data.name]);
+        },
+        error => console.error(error)
+      );
+    } else {
+      // update
+      this.heroesService.actualizarHeroe(this.heroe, 'heroes', this.id).subscribe(
+        data => {
+          this.router.navigate(['/heroe', data.name]);
+        },
+        error => console.error(error)
+      );
+    }
+
   }
 
 }
