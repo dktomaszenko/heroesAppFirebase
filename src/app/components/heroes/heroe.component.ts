@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Heroe} from '../../interfaces/heroe.interface';
 import {HeroesService} from '../../services/heroes.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-heroe',
@@ -18,7 +18,8 @@ export class HeroeComponent implements OnInit {
   };
 
   constructor(private heroesService: HeroesService,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class HeroeComponent implements OnInit {
   }
 
   guardar() {
-    this.heroesService.nuevoHeroe(this.heroe).subscribe(
+    this.heroesService.nuevoHeroe(this.heroe, 'heroes').subscribe(
       data => {
         this.router.navigate(['/heroe', data.name]);
       },
