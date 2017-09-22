@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 export class HeroesService {
 
   fireUrl = 'https://heroesapp-aaed8.firebaseio.com/';
-  /*fireUrl = 'https://heroesapp-aaed8.firebaseio.com/heroes.json';*/
 
   constructor(private http: Http) {
   }
@@ -23,8 +22,6 @@ export class HeroesService {
       .map(res => {
         return res.json();
       });
-
-
   }
 
   actualizarHeroe(heroe: Heroe, prefix: string = 'heroes', id: string) {
