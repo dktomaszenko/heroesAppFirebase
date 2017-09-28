@@ -38,4 +38,10 @@ export class HeroesService {
 
   }
 
+  getHeroe(id: string, prefix: string = 'heroes') {
+    return this.http.get(this.fireUrl + `${ prefix }/${id}.json`)
+      .map(res => res.json());
+  }
+
+
 }
