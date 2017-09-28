@@ -46,5 +46,12 @@ export class HeroesService {
       .map(res => res.json());
   }
 
+  borrarHeroe(id:string,prefix: string = 'heroes'){
+    return this.http.delete(this.fireUrl + `${ prefix }/${id}.json`)
+      .map(res => {
+        return res.json();
+      });
+  }
+
 
 }
