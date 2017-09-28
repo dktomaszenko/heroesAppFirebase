@@ -43,5 +43,10 @@ export class HeroesService {
       .map(res => res.json());
   }
 
+  getHeroes(prefix: string = 'heroes') {
+    return this.http.get(this.fireUrl + `${ prefix }.json`)
+      .map( res => res.json() );
+  }
+
 
 }
